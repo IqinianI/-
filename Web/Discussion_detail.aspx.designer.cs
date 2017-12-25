@@ -10,7 +10,7 @@
 namespace Web {
     
     
-    public partial class WebForm8 {
+    public partial class WebForm9 {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -22,13 +22,22 @@ namespace Web {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// LVDiscussion 控件。
+        /// updatejoin 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView LVDiscussion;
+        protected global::System.Web.UI.UpdatePanel updatejoin;
+        
+        /// <summary>
+        /// LVdis_de 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView LVdis_de;
         
         /// <summary>
         /// updatecomment 控件。
@@ -67,12 +76,12 @@ namespace Web {
         protected global::System.Web.UI.UpdatePanel updatereply;
         
         /// <summary>
-        /// LVDisReply 控件。
+        /// LVreply 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView LVDisReply;
+        protected global::System.Web.UI.WebControls.ListView LVreply;
     }
 }
