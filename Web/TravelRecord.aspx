@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Nav.Master" AutoEventWireup="true" CodeBehind="TravelRecord.aspx.cs" Inherits="Web.WebForm6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <%--    <link href="css/bootstrap.min.css" rel="stylesheet" />--%>
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -53,9 +53,9 @@
                     <p><%#Eval("record_cont") %></p>
                         <ul class="stats">
                             <li><a href="TravelCommentReply.aspx?id=<%#Eval("trrecord_id") %>" class="button-main big">continue reding</a></li>
-                            <li style="float:right;"><a href="#" class="icon-bar fa-heart"><%#Eval("col_count") %></a></li>
-                            <li style="float:right;"><a href="#" class="icon-bar fa-comment"><%#Eval("comt_count") %></a></li>
-                            <li style="float:right;"><a href="#" class="icon-bar fa-heart-o"><%#Eval("like_count") %></a></li>
+                            <li style="float:right;"><a href="#" class="fa fa-star-o"><%#Eval("col_count") %></a></li>
+                            <li style="float:right;"><a href="#" class="fa fa-comment-o"><%#Eval("comt_count") %></a></li>
+                            <li style="float:right;"><a href="#" class="fa fa-heart-o"><%#Eval("like_count") %></a></li>
                         </ul>
                 </article>
   <%--          </div>--%>

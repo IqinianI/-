@@ -28,5 +28,9 @@ namespace BLL
         {
             return idiscussion.SelectDiscussion(discussion_id);
         }
+        public static DataTable SelectKeys(string Keys)
+        {
+            return idiscussion.SelectKeys(Keys);
+        }
     }
 }

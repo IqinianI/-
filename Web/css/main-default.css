@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -12697,7 +12697,7 @@ textarea.b-product-card-textarea {
     font-size: 0.92308em;
     line-height: 2; }
   .f-breadcrumbs a {
-    color: #e26228; }
+    color: #337ab7; }
     .f-breadcrumbs a:hover {
       color: #666666; }
       .f-breadcrumbs a:hover i:before {

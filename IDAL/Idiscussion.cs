@@ -15,5 +15,6 @@ namespace IDAL
         DataTable SelectDiscussion(int discussion_id);
         DataTable SelectAll();
         int DeleteDiscussion(int discussion_id);
+        DataTable SelectKeys(string Keys);
     }
 }

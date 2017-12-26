@@ -19,8 +19,9 @@ namespace Web
                 BindDiscussion();
                 BindHotDiscussion();
                 BindLikeDiscussion();
+                Biz.TargetPath = Request.RawUrl;
             }
-            
+
         }
         public void BindDiscussion()
         {
@@ -57,6 +58,38 @@ namespace Web
         protected void discussion_PreRender(object sender, EventArgs e)
         {
             BindDiscussion();
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (Session["user_id"] != null)
+            {
+                Response.Redirect("Index.aspx");//发帖页面
+            }
+            else
+            {
+                Label1.Text = "发帖请先登录！";
+                Response.Redirect("Login1.aspx");
+            }
+        }
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            string keys = SearchText.Text.Trim();
+            DataTable dt = DiscussionManager.SelectKeys(keys);
+            if (dt != null && dt.Rows.Count != 0)
+            {
+                LVDiscussion.DataSource =dt;
+                LVDiscussion.DataBind();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(UpDatePanel01, this.GetType(), "click", "alert('没有找到相关内容')", true);
+                BindDiscussion();
+            }
+        }
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            LVDiscussion.DataBind(); //绑定ListView
         }
     }
 }

@@ -46,5 +46,15 @@ namespace DAL
             };
             return DBHelper.GetFillData(sql, sp);
         }
+        public DataTable SelectKeys(string Keys)
+        {
+            string sql = "select * From users, discussion where users.user_id=discussion.user_id and  dis_title like '%" + @Keys + "%'";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@Keys",Keys)
+            };
+            DataTable dt = DBHelper.GetFillData(sql, sp);
+            return dt;
+        }
     }
 }

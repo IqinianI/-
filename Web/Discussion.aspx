@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Nav.Master" AutoEventWireup="true" CodeBehind="Discussion.aspx.cs" Inherits="Web.WebForm12" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" rel='stylesheet' href="js/fancybox/jquery.fancybox.css"/>
     <link href="css/main-default.css" rel="stylesheet" />
     <link type="text/css" rel='stylesheet' href="fonts/fonts.css"/>
@@ -9,11 +9,20 @@
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <div class="container">    
+<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+  <div class="container">       
       <div class="row">
-         
+    <div class="b-breadcrumbs f-breadcrumbs">
+        <%--<span style="font-size:30px;color:steelblue;padding-left:10px;"><a href="#"><i class="fa fa-clipboard"></i>我要发帖</a></span>--%>
+        <div style="padding-left:10px;font-size:28px;"><i class="fa fa-clipboard"></i><asp:Button ID="Button1" runat="server" Text="我要发帖" OnClick="Button1_Click" CssClass="btn btn-primary fa fa-clipboard"/>
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+            </div>
+        </div>
+          <div class="l-inner-page-container"></div>
                    <div class="col-md-9 ">
-                        <asp:ListView ID="LVDiscussion" runat="server">
+                <asp:UpdatePanel ID="UpDatePanel01" runat="server">
+                <ContentTemplate> 
+           <asp:ListView ID="LVDiscussion" runat="server">
               <LayoutTemplate>
                   <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
               </LayoutTemplate>
@@ -40,16 +49,30 @@
                             </div>
                         </div> 
                        </div>        
-                               </ItemTemplate>
+                  </ItemTemplate>
       </asp:ListView>
-                  </div>
-
+                   <div class="pager">
+                      <asp:DataPager runat ="server" ID ="datapager" PageSize ="3" PagedControlID="LVDiscussion" OnPreRender ="discussion_PreRender" >
+                       <Fields>
+                        <asp:NextPreviousPagerField FirstPageText="首页" PreviousPageText="上一页" ButtonType="Button" ShowFirstPageButton="true" ShowNextPageButton="false"  ButtonCssClass="btn btn-primary btn-sm"/>
+                        <asp:NumericPagerField NextPreviousButtonCssClass="btn btn-primary btn-sm" NumericButtonCssClass="btn btn-primary btn-sm" ButtonCount="4" />
+                        <asp:NextPreviousPagerField NextPageText="下一页" LastPageText="末页" ShowPreviousPageButton="false" ButtonType="Button" ButtonCssClass="btn btn-primary btn-sm" ShowLastPageButton="true" />                   
+                       </Fields>
+                       </asp:DataPager>
+                  </div> 
+                </ContentTemplate>
+                  </asp:UpdatePanel>
+</div>
           <div class="col-md-3">
                <div class="row">
                      <div class="col-md-12">
                         <div class="b-form-row b-input-search">
-                            <input class="form-control" type="text" placeholder="Enter your keywords"/>
-                            <span class="b-btn b-btn-search f-btn-search fa fa-search fa-2x"></span>
+                          <%--  <input class="form-control" type="text" placeholder="Enter your keywords"/>--%>
+                            <asp:TextBox ID="SearchText" runat="server" class="form-control" placeholder="Enter your keywords"></asp:TextBox>
+                            <%--<span class="b-btn b-btn-search f-btn-search fa fa-search fa-2x"></span>--%>
+                            <%--<span class="input-group-btn">--%>
+                           <asp:LinkButton ID="SearchBtn" runat="server" class="b-btn b-btn-search f-btn-search fa fa-search fa-2x" OnClick="SearchBtn_Click"></asp:LinkButton>
+                           <%--</span>--%>
                         </div>
                     </div>
                </div>
@@ -112,19 +135,6 @@
 
               </div>
           </div>
-          <div class="pager">
-      <asp:DataPager runat ="server" ID ="datapager" PageSize ="3" PagedControlID="LVDiscussion" OnPreRender ="discussion_PreRender" >
-           <Fields>
-           
-                        <asp:NextPreviousPagerField FirstPageText="首页" PreviousPageText="上一页" ButtonType="Button" ShowFirstPageButton="true" ShowNextPageButton="false"  ButtonCssClass="btn btn-primary btn-sm"/>
-                        <asp:NumericPagerField NextPreviousButtonCssClass="btn btn-primary btn-sm" NumericButtonCssClass="btn btn-primary btn-sm" ButtonCount="4" />
-                        <asp:NextPreviousPagerField NextPageText="下一页" LastPageText="末页" ShowPreviousPageButton="false" ButtonType="Button" ButtonCssClass="btn btn-primary btn-sm" ShowLastPageButton="true" />
-                   
-          </Fields>
-      </asp:DataPager>
-            </div> 
-
-      </div>
      
 
   </div>
@@ -136,4 +146,5 @@
     <script src="js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="js/fancybox/jquery.mousewheel.pack.js"></script>
     <script src="js/fancybox/jquery.fancybox.custom.js"></script>
+    </div>
 </asp:Content>
