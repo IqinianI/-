@@ -32,6 +32,7 @@
         </asp:ListView>
     </div>
     <div id="right">
+
     <asp:ListView ID="LVTravel" runat="server">
         <LayoutTemplate>
             <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
@@ -39,6 +40,7 @@
         <ItemTemplate>
 <%--            <div class="main">--%>
                 <%--游记详情--%>
+
                 <article class="post">
                     <header>
                         <div class="title">
@@ -56,11 +58,13 @@
                             <li style="float:right;"><a href="#" class="fa fa-star-o"><%#Eval("col_count") %></a></li>
                             <li style="float:right;"><a href="#" class="fa fa-comment-o"><%#Eval("comt_count") %></a></li>
                             <li style="float:right;"><a href="#" class="fa fa-heart-o"><%#Eval("like_count") %></a></li>
+                             
                         </ul>
                 </article>
   <%--          </div>--%>
         </ItemTemplate>
     </asp:ListView>
+
          <div class="pager">
                      <asp:DataPager ID="travelpager" runat="server"  PagedControlID="LVTravel"  PageSize="4" >
                          <Fields>   

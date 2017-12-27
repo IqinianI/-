@@ -35,13 +35,17 @@ namespace BLL
             return itravel_record.SelectTop(top);
         }
 
-        public static int UpdateLike(int trreccord_id)
+        public static int UpdateLike(int trrecord_id)
         {
-            return itravel_record.UpdateLike(trreccord_id);
+            return itravel_record.UpdateLike(trrecord_id);
         }
         public static int UpdateDislike(int trreccord_id)
         {
             return itravel_record.UpdateDislike(trreccord_id);
+        }
+        public static int UpdateCol(int trrecord_id)
+        {
+            return itravel_record.UpdateCol(trrecord_id);
         }
     }
 }

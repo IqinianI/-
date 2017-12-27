@@ -17,10 +17,12 @@ namespace Web
             {
                 BindTravel();
                 BindTravel1();
+                
             }
         }
         public void BindTravel()
         {
+            
             DataTable dt = Travel_recordManager.SelectAll();
             if(dt!=null && dt.Rows.Count!=0)
             {
@@ -37,5 +39,7 @@ namespace Web
                 LVTravel1.DataBind();
             }
         }
+
+        
     }
 }

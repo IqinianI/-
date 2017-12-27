@@ -50,17 +50,17 @@ namespace DAL
         }
       
 
-        public int UpdateLike(int trreccord_id)
+        public int UpdateLike(int trrecord_id)
         {
-            string sql = "update travel_record set Like=Like+1 where trreccord_id=@trreccord_id";
-            SqlParameter[] para = { new SqlParameter("@trreccord_id", trreccord_id) };
+            string sql = "update travel_record set Like_count=Like_count+1 where trrecord_id=@trrecord_id";
+            SqlParameter[] para = { new SqlParameter("@trrecord_id", trrecord_id) };
             return DBHelper.GetExcuteNonQuery(sql, para);
         }
 
-        public int UpdateDislike(int trreccord_id)
+        public int UpdateDislike(int trrecord_id)
         {
-            string sql = "update travel_record set Dislike=Dislike+1 where trreccord_id=@trreccord_id";
-            SqlParameter[] para = { new SqlParameter("@trreccord_id", trreccord_id) };
+            string sql = "update travel_record set Dislike=Dislike+1 where trrecord_id=@trrecord_id";
+            SqlParameter[] para = { new SqlParameter("@trrecord_id", trrecord_id) };
             return DBHelper.GetExcuteNonQuery(sql, para);
         }
 
@@ -68,6 +68,12 @@ namespace DAL
         {
             string sql = "select top " + top + " * from travel_record,users where travel_record.user_id=users.user_id order by col_count desc";
             return DBHelper.GetFillData(sql);
+        }
+        public int UpdateCol(int trrecord_id)
+        {
+            string sql = "update travel_record  set col_count=col_count+1 where trrecord_id=@trrecord_id";
+            SqlParameter[] para = { new SqlParameter("@trrecord_id", trrecord_id) };
+            return DBHelper.GetExcuteNonQuery(sql, para);
         }
     }
 }

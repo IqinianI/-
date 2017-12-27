@@ -63,7 +63,7 @@ namespace Web
         {
             if (Session["user_id"] != null)
             {
-                Response.Redirect("Index.aspx");//发帖页面
+                Response.Redirect("pub_discussion.aspx");//发帖页面
             }
             else
             {

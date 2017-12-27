@@ -16,7 +16,8 @@ namespace IDAL
         DataTable SelectAll();
         DataTable SelectTop(int top);
         //DataTable SelectPub_time(DateTime date);
-        int UpdateLike(int trreccord_id);
+        int UpdateLike(int trrecord_id);
         int UpdateDislike(int trreccord_id);
+        int UpdateCol(int trrecord_id);
     }
 }

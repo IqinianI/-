@@ -15,7 +15,7 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Biz.TargetPath = Request.RawUrl;
         }
         protected void btnTest_click(object sender, EventArgs e)
         {
@@ -30,8 +30,8 @@ namespace Web
             try
             {
                 travel_record record = new travel_record();
-                record.user_id = 3;
-                record.record_author = "强东东";
+                record.user_id = int.Parse(Session["user_id"].ToString());
+                record.record_author = Session["user_name"].ToString();
                 record.record_title = title.Text.Trim();
                 record.record_cont = myEditor.InnerText;
                 record.pub_time = DateTime.Now.ToLocalTime();

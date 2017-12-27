@@ -12,7 +12,7 @@
         <asp:Button ID="cover" runat="server" Text="上传封面" class="btn" OnClick="cover_Click" /><br />
         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
-            <div>内容：<br />
+         <%--   <div>内容：<br />--%>
                 <script id="myEditors" type="text/plain"></script>
                 <textarea id="myEditor" name="myEditor" runat="server" onblur="setUeditor()" style="width: 1030px;
                     height: 250px;"></textarea>

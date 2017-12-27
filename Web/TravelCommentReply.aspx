@@ -2,12 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/demo.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/comment.css" rel="stylesheet" />
     <link href="css/Travel.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdateLike" runat="server">
+            <ContentTemplate>
      <asp:ListView ID="LVTravel1" runat="server">
             <LayoutTemplate>
                 <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
@@ -19,12 +21,22 @@
                         <p><%#Eval("record_cont") %></p>
                         <time class="published"><%#Eval("pub_time") %></time>
                         <a href="#" class="author" ><img src="<%#Eval("user_photo") %>" /></a>
+                        <ul class="stats" style="    display: flex; justify-content: space-around;">
+                            <li style="float:right;"><a href="#" class="fa fa-comment-o"><%#Eval("comt_count") %></a></li>                            
+                            <li><asp:LinkButton ID="btnCol" runat="server" class="fa fa-star-o btnDL" style="text-decoration:none;" OnClick="btnCol_Click"></asp:LinkButton>
+                            <span><%#Eval("col_count") %></span></li>
+                            <li><asp:LinkButton ID="btnLike" runat="server" class="fa fa-heart-o btnDL" style="text-decoration:none;" OnClick="btnLike_Click"></asp:LinkButton>
+                            <span><%#Eval("Like_count") %></span></li>
+                             
+                        </ul>
                     </header>
                     <a href="#"><img src="<%#Eval("record_cover") %>" class="image featured" style="height:400px;"/></a>
+                    
                 </article>
             </ItemTemplate>
         </asp:ListView>
-
+            </ContentTemplate>
+        </asp:UpdatePanel>
     <%--评论--%>
    <asp:UpdatePanel ID="updatecomment" runat="server">
        <ContentTemplate>

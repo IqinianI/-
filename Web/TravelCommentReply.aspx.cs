@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using Models;
 using BLL;
 using System.Data;
+using System.Data.SqlClient;
+using DAL;
 
 namespace Web
 {
@@ -33,6 +35,7 @@ namespace Web
                 LVTravel1.DataBind();
             }
         }
+
         public void BindTravelComment()
         {
             int trrecord_id= int.Parse(Request.QueryString["id"]);
@@ -131,7 +134,84 @@ namespace Web
                 }
             }
         }
+
+        protected void btnLike_Click(object sender, EventArgs e)
+        {
+            if (Session["user_name"] != null)
+            {
+                if (ViewState["like_count"] == null)
+                {
+                    string sql = "select * from Users,travel_record where users.user_id=travel_record.user_id and user_name=@user_name";
+                    SqlParameter[] para = new SqlParameter[]
+                    {
+                         new SqlParameter("@user_name",Session["user_name"].ToString())
+                    };
+                    SqlDataReader dr = DBHelper.GetDataReader(sql, para);
+                    if (dr.Read())
+                    {
+                        ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('您已点赞过该游记！')", true);
+                    }
+                    else { 
+                    int trreccord_id = int.Parse(Request.QueryString["id"]);
+                    Travel_recordManager.UpdateLike(trreccord_id);
+                    ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('点赞成功！')", true);
+                    BindTravel();
+                    ViewState["like_count"] = "true";
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('您点过赞了~')", true);
+                }
+
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('请先登录');location='Login1.aspx'", true);
+            }
+        }
+
+        protected void btnCol_Click(object sender, EventArgs e)
+        {
+            if (Session["user_name"] != null)
+            {
+                if (ViewState["col_count"] == null)
+                {
+                    string sql = "select * from Users,travel_record where users.user_id=travel_record.user_id and user_name=@user_name";
+                    SqlParameter[] para = new SqlParameter[]
+                    {
+                         new SqlParameter("@user_name",Session["user_name"].ToString())
+                    };
+                    SqlDataReader dr = DBHelper.GetDataReader(sql, para);
+                    if (dr.Read())
+                    {
+                        ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('您已收藏过该游记！')", true);
+                    }
+                    else
+                    {
+                        int trrecord_id = int.Parse(Request.QueryString["id"]);
+                        Travel_recordManager.UpdateCol(trrecord_id);
+                        ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('收藏成功！')", true);
+                        BindTravel();
+                        ViewState["col_count"] = "true";
+                    }
+
+                    }
+               
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('您点收藏了~')", true);
+                }
+
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(UpdateLike, this.GetType(), "click", "alert('请先登录');location='Login1.aspx'", true);
+            }
+        }
+
     }
+}
 
  
-}
+
