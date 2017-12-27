@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Nav.Master" AutoEventWireup="true" CodeBehind="pub_discussion.aspx.cs" Inherits="Web.WebForm10" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Nav.Master" AutoEventWireup="true" CodeBehind="pub_discussion.aspx.cs" Inherits="Web.pub_discussion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <script type="text/javascript" src="utf8-net/ueditor.config.js"></script>

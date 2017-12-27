@@ -10,7 +10,7 @@
 namespace Web {
     
     
-    public partial class WebForm10 {
+    public partial class pub_discussion {
         
         /// <summary>
         /// title 控件。
